@@ -1,0 +1,38 @@
+<html>
+  <head>
+    <script src="https://cdn.socket.io/socket.io-1.2.0.js"></script>
+    <script src="http://code.jquery.com/jquery-1.11.1.js"></script>
+    <script src="/client.js"></script>
+    <script>
+      $(document).ready(function () {
+        var $moves = $("#moves");
+        function move (value) {
+          $moves.append("<div>" + value+ "</div>");
+        }
+
+        window.moves.setMove(move);
+
+        ["left", "right", "up", "down"].forEach(function (key) {
+          $("#" + key).on("click", function () {
+            window.moves.sendMove(key);
+          });
+        });
+      });
+    </script>
+  </head>
+
+
+  <body>
+    <button id="left">Left</button>
+    <button id="right">Right</button>
+    <button id="up">Up</button>
+    <button id="down">Down</button>
+
+    <div id="moves"></div>
+
+  </body>
+
+
+
+
+</html>
